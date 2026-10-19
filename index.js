@@ -11,6 +11,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Import routes
+const documentsRouter = require("./routes/documents");
+
+// Use routes
+app.use("/api/documents", documentsRouter);
 
 
 // Health check endpoint
@@ -31,4 +36,5 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`📝 Documents API: http://localhost:${PORT}/api/documents`);
 });
